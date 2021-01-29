@@ -788,11 +788,7 @@
 <?php
 
     }else{
-<<<<<<< HEAD
         header('Location:/dashboard/acessdanied');
-=======
-        header('Location: http://localhost:8000/dashboard/acessdanied');
->>>>>>> 5f81438aaf2a0ff70faead1792d748c43c0cbb68
     }
 
 ?>

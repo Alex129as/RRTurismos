@@ -16,19 +16,13 @@
     }
     
     public function initRoutes(){
-<<<<<<< HEAD
       $this->routes['/'] = array('controller' => 'indexController', 'action' => 'index');
-=======
->>>>>>> 5f81438aaf2a0ff70faead1792d748c43c0cbb68
       $this->routes['/login'] = array('controller' => 'indexController', 'action' => 'index');
       $this->routes['/dashboard'] = array('controller' => 'Dashboard', 'action' => 'index');
       $this->routes['/logout'] = array('controller' => 'Dashboard', 'action' => 'logout');
       $this->routes['/dashboard/acessdanied'] = array('controller' => 'Dashboard', 'action' => 'AcessDanied');
       $this->routes['/404'] = array('controller' => 'indexController', 'action' => 'error');
-<<<<<<< HEAD
       $this->routes['/login/forgot/password'] = array('controller' => 'indexController', 'action' => 'forgotPassword');
-=======
->>>>>>> 5f81438aaf2a0ff70faead1792d748c43c0cbb68
     }
 
     protected function run($url){
