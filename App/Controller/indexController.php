@@ -14,6 +14,9 @@ class indexController{
         $this->render('404NotFound/404.php');
         $this->content();
     }
+    public function singIn(){
+        header('location:/login');
+    }
 
     public function forgotPassword(){
         $this->render('login/forgotPassword/index.php');

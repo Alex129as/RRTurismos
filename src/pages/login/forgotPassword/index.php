@@ -16,9 +16,45 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet"/>
     <!-- Custom styles for this template-->
     <link href="../../../../CssTemplate/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .checkbox {
+            font: 300 1em 'Open Sans', sans-serif;
+            height: 5px;
+            width: 5px;
+        }
+        
+        .checkbox label {
+            cursor: pointer;
+            outline: none;
+            -webkit-user-select: none;
+        }
+        
+        .checkbox input[type="checkbox"] + label::before {
+            content: "\f404";
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #e74c3c;
+            font-family: "Ionicons";
+            color: #fff;
+            display: inline-block;
+            line-height: 20px;
+            text-align: center;
+            margin-right: .5em;
+        }
+        
+        .checkbox input[type="checkbox"]:checked + label::before {
+            content: "\f3fd";
+            background-color: #2ecc71;
+        }
+        
+        .checkbox input[type="checkbox"] {
+            display: none;
+        }
+    </style>
 
 </head>
 
@@ -48,21 +84,28 @@
                                     <form class="user">
                                         <div class="form-group">
                                             <div class="input-container">
-                                                <input type="text" class="form-control form-control-user"
-                                                    id="exampleInputEmail"
-                                                    placeholder="Informe Seu usuário"/>
-                                                <br>
+                                                <div class="row" id="inputUser">
+                                                    <input type="text" class="form-control form-control-user" placeholder="Informe seu Username ex: Alex.Sandro" id="user" name="user">
+                                                </div>       
+                                            </div>
+                                            <br>    
+                                            <div class="input-container">
+                                                <div class="row" id="inputDate">
+                                                    <input type="hidden" class="form-control form-control-user" id="datanasc" name="datanasc">
+                                                </div>       
+                                            </div>
+                                            <br>    
+                                            <div class="input-container">
+                                                <div class="row" id="inputCPF">
+                                                    <input type="hidden" class="form-control form-control-user" placeholder="Informe seu CPF" id="cpf" name="cpf">
+                                                </div>       
                                             </div>    
-                                            <input type="date" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..."/>
-                                                <br>
-                                            <input type="text" class="form-control form-control-user"
-                                                placeholder="Informe seu CPF"/>
                                         </div>
-                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                            Reset Password
-                                        </a>
+                                        <div class="row">
+                                            <button id="btnresetpassword" class="btn btn-primary btn-user btn-block" id="btnresetpassword">
+                                                Reset Password
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -85,7 +128,52 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/../../../jsTemplate/sb-admin-2.min.js"></script>
+    <!--Ajax-->
+    <script src="../../../vendor/jquery/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 
 </body>
+
+<script type="text/javascript">
+    $(document).ready(() => {
+        
+        $("#btnresetpassword").attr('disabled', true);
+        $("#btnresetpassword").css('opacity','0.5');  
+
+        $("#user").blur(()=>{
+            var user = $("#user").val();
+
+            $.ajax({
+                url: "http://localhost:8000/src/pages/login/verifica_user.php",
+                method: "POST",
+                data: { user: user },
+                datatype: "JSON",
+            }).done((res)=>{
+                if(res.length == 1){
+                    for(let i = 0; i < res.length; i++){
+                        if(res[i].usuario === user){
+                            $("#inputUser i").remove();
+                            $("#inputUser").append('<i id="validacpf" class="far fa-check-circle" style="font-size: 25px; margin-top: 3%; margin-left: -10%; color: green;"></i>');
+                            $("#datanasc").attr("type", "date")
+                        }else{
+                            $("#inputUser i").remove();
+                            $("#inputUser").
+                            append('<i class="far fa-times-circle" style="font-size: 25px; margin-top: 3%; margin-left: -10%; color: red;"></i>');
+                        }
+                    }    
+                }else if(res.length != 1 && user != ""){
+                    $("#inputUser i").remove();
+                    $("#inputUser").
+                    append('<i class="far fa-times-circle" style="font-size: 25px; margin-top: 3%; margin-left: -10%; color: red;"></i>');
+                    $("#datanasc").attr("type", "hidden");
+                }else{
+                    $("#inputUser i").remove();
+                    $("#datanasc").attr("type", "hidden");
+                }
+            })
+        })
+        
+    });
+
+</script>
 
 </html>

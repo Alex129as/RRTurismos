@@ -16,7 +16,7 @@
     }
     
     public function initRoutes(){
-      $this->routes['/'] = array('controller' => 'indexController', 'action' => 'index');
+      $this->routes['/'] = array('controller' => 'indexController', 'action' => 'singIn');
       $this->routes['/login'] = array('controller' => 'indexController', 'action' => 'index');
       $this->routes['/dashboard'] = array('controller' => 'Dashboard', 'action' => 'index');
       $this->routes['/logout'] = array('controller' => 'Dashboard', 'action' => 'logout');

@@ -765,7 +765,8 @@
 </body>
 
 <script type="text/javascript">
-
+    
+    $("#Qtduser").append( document.createTextNode("0"))
     BuscaTotalUser = () =>{
         $.ajax({
             url: "http://localhost:8000/src/pages/dashboard/ContaUser.php",
@@ -778,7 +779,6 @@
             }
         })
     }
-
    setInterval(() => {
         BuscaTotalUser();
    }, 1000); 
