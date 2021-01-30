@@ -143,11 +143,12 @@
             var user = $("#user").val();
 
             $.ajax({
-                url: "http://localhost:8000/src/pages/login/verifica_user.php",
+                url: "http://localhost:8000/src/pages/login/Verifica_user.php",
                 method: "POST",
                 data: { user: user },
                 datatype: "JSON",
             }).done((res)=>{
+                console.log(res)
                 if(res.length == 1){
                     for(let i = 0; i < res.length; i++){
                         if(res[i].usuario === user){

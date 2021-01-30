@@ -160,7 +160,16 @@
           $("#btnlogin").html("")
           $("#btnlogin").append( document.createTextNode("Login"))
         },  
+        error : (err) =>{
+          console.log(err);
+          swal({
+              type: "error",
+              title: "Server Error",
+              text: "Não foi possível se Conectar com Banco de Dados StatusCode: "+err.status,
+          });
+        },
         success: (res) => {
+          console.log(res);
           if (res === "login_checked") {
             swal({
               position: "top-end",
@@ -178,13 +187,6 @@
             });
           }
         },
-        error : (err) =>{
-          swal({
-              type: "error",
-              title: "Server Error",
-              text: "Não foi possível se Conectar com Banco de Dados StatusCode: "+err.status,
-            });
-        }
       });
     });
     $(document).ready(()=> {

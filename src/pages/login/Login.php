@@ -20,8 +20,9 @@
                 $_SESSION['User'] = $Array['usuario'];
                 $_SESSION['UserID'] = $Array['id'];
                 $_SESSION['NomeUser'] = $Array['nome'];
-                $_SESSION['TypeUser'] = $Array['tipousuario'];
-                $_SESSION['StatusUser'] = $Array['tipousuario'];
+                $_SESSION['TypeUser'] = $Array['tipouser'];
+                $_SESSION['StatusUser'] = $Array['status'];
+                $_SESSION['TokenUser'] = $Array['token'];
             endforeach;
 
             echo json_encode("login_checked");
