@@ -1,6 +1,6 @@
 <?php
   header('Content-Type: application/json');
-  $pdo = require_once('./../../../Connection/connection.php');
+  $pdo = require_once('./../../Connection/connection.php');
   function contUSer($pdo){
     try{
     

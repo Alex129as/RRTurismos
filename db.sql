@@ -11,4 +11,4 @@ CREATE TABLE usuario (
 );
 
 INSERT INTO usuario(token, nome, cpf, data_nasc, usuario, senha, tipouser, status) 
-values(UPPER(md5((select left(shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 64)))),'ALEX SANDRO LIMA SOBRINHO','054.976.292-28', now(),'alex.lima', md5('alex129as'), 'A', 'A');
+values(UPPER(md5('ALEX SANDRO LIMA SOBRINHO','054.976.292-28')),'ALEX SANDRO LIMA SOBRINHO','054.976.292-28', now(),'alex.lima', md5('alex129as'), 'A', 'A');

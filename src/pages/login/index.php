@@ -145,7 +145,7 @@
       var senha = $("#password").val();
 
       $.ajax({
-        url: "http://localhost:8000/src/pages/login/Login.php",
+        url: "http://localhost:8000/functions/singIn/index.php",
         method: "POST",
         data: { user: user, password: senha },
         datatype: "JSON",
@@ -169,7 +169,6 @@
           });
         },
         success: (res) => {
-          console.log(res);
           if (res === "login_checked") {
             swal({
               position: "top-end",
@@ -194,7 +193,7 @@
         var user = $("#user").val();
 
         $.ajax({
-          url: "http://localhost:8000/src/pages/login/verifica_user.php",
+          url: "http://localhost:8000/functions/validateUser/index.php",
           method: "POST",
           data: { user: user },
           datatype: "JSON",

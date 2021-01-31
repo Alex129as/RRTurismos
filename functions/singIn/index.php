@@ -1,6 +1,6 @@
 <?php
   header('Content-Type: application/json');
-  $pdo = require_once('./../../../Connection/connection.php');
+  $pdo = require_once('./../../Connection/connection.php');
   $user = $_POST['user'];
   $senha = md5($_POST['password']);
 
@@ -34,8 +34,8 @@
 
     }catch ( PDOException $e ){
 
-    echo "ERROR: " . $e->getMessage()."<br>"
-        ."Tipo do Erro: " . $e->getCode(); 
+        echo json_encode("ERROR: " . $e->getMessage()."<br>"
+            ."Tipo do Erro: " . $e->getCode()); 
 
     }
 

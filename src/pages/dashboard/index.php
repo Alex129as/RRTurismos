@@ -407,7 +407,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
+                                                usuários Ativos</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="Qtduser"> </div>
                                         </div>
                                         <div class="col-auto">
@@ -769,7 +769,7 @@
     $("#Qtduser").append( document.createTextNode("0"))
     BuscaTotalUser = () =>{
         $.ajax({
-            url: "http://localhost:8000/src/pages/dashboard/ContaUser.php",
+            url: "http://localhost:8000/functions/sumUser/index.php",
             method: 'GET',
             dataType: 'JSON',
         }).done((res)=>{

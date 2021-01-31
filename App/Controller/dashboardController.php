@@ -12,7 +12,7 @@ class Dashboard{
     }
 
     public function logout(){
-        $this->render('logout/logout.php');
+        $this->renderFunctions('logout/index.php');
         $this->content();
     }
     public function AcessDanied(){
@@ -27,6 +27,11 @@ class Dashboard{
     public function render($view){
 
         $this->view = 'src//pages//'.$view;
+
+    }
+    public function renderFunctions($view){
+
+        $this->view = 'functions//'.$view;
 
     }
 

@@ -1,12 +1,14 @@
 <?php
   header('Content-Type: application/json');
-  $pdo = require_once('./../../../Connection/connection.php');
+  $pdo = require_once('./../../Connection/connection.php');
   $user = $_POST['user'];
-  function ValidaUser($pdo, $user){
+  $cpf = $_POST['cpf'];
+  $token = $_POST['token'];
+  function ValidaUser($pdo, $user, $cpf, $token){
     try{
     
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $BuscaUser = "SELECT * FROM USUARIO WHERE usuario = '$user'";
+      $BuscaUser = "SELECT usuario, cpf, token FROM USUARIO WHERE usuario = '$user' AND cpf ='$cpf' AND token ='$token'";
 
       $stmt = $pdo->prepare($BuscaUser);
       $stmt->execute();
@@ -20,5 +22,5 @@
 
     }
   }
-  ValidaUser($pdo, $user);
+  ValidaUser($pdo, $user, $cpf, $token);
 ?>
